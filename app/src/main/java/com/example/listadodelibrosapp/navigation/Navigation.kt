@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-
+import com.example.listadodelibrosapp.screens.BookInfo
+import com.example.listadodelibrosapp.screens.MainScreen
+import com.example.listadodelibrosapp.viewmodel.BookViewModel
 
 
 @Composable
@@ -18,8 +20,13 @@ fun Navigation(bookViewModel: BookViewModel) {
             MainScreen(navController, bookViewModel)
         }
 
-        composable(Routes.BookInfo.route) {
-            BookInfo(navController, bookViewModel)
+        composable(
+            route = Routes.BookInfo.route) {
+                BookInfo(
+                    navController,
+                    bookViewModel
+                )
         }
     }
 }
+

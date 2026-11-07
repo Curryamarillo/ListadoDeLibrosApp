@@ -27,9 +27,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             ListadoDeLibrosAppTheme {
                 // A surface container using the 'background' color from the theme
+                // Lo he cambiado porque es de color blanco y queda mal
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.onPrimary
                 ) {
                     Navigation(bookViewModel)
                     // Si solo se necesita el View Model en un lugar se puede declarar al llamar al componente

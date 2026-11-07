@@ -26,6 +26,20 @@ class BookViewModel : ViewModel() {
     private var _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    // Función toggle para favorito
+    fun toggleFavorite() {
+        // Si es nulo sale de la funcion y no hace nada
+        val current = _selectedBook.value ?: return
+        // Crea un nuevo objeto cambiando la propiedad favorite
+        // Invierte el booleano
+        val updated = current.copy(favorite = !current.favorite)
+        // Reemplaza el objeto por uno nuevo actualizado
+        _selectedBook.value = updated
+        // Actualiza mapeando la lista incluyendo el objeto de antes con su
+        // valor actualizado
+        _books.value = _books.value?.map { if (it == current) updated else it }
+    }
+
     // Cuando instancia un objeto BookViewModel tras llamar al constructor se ejecuta el bloque init
     init {
         // Corrutina: coroutineScope
